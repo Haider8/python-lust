@@ -8,9 +8,7 @@ def file_rotated(file_name, orig_stat):
         try:
             new_stat = os.stat(file_name)
 
-            if orig_stat == None:
-                return True, new_stat
-            elif orig_stat.st_ino != new_stat.st_ino:
+            if orig_stat == None or orig_stat.st_ino != new_stat.st_ino:
                 return True, new_stat
             else:
                 return False, orig_stat
